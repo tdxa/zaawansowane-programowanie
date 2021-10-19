@@ -19,7 +19,7 @@ def multiply_by_2_v2(numbers: List[Union[int, float]]):
 
 def print_even(numbers: List[Union[int, float]]):
     try:
-        for number in range(10):
+        for number in range(len(numbers)):
             if numbers[number] % 2 == 0:
                 print(numbers[number])
     except IndexError:
@@ -28,7 +28,7 @@ def print_even(numbers: List[Union[int, float]]):
 
 def print_even_index(numbers: List[Union[int, float]]):
     try:
-        for number in range(10):
+        for number in range(len(numbers)):
             if number % 2 != 0:
                 print(numbers[number])
     except IndexError:
