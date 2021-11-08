@@ -11,7 +11,7 @@ class Student:
 
 
 class Library:
-    def __init__(self, city: str, street:str, zip_code:str, open_hours:str, phone:str):
+    def __init__(self, city: str, street: str, zip_code: str, open_hours: str, phone: str):
         self.city = city
         self.street = street
         self.zip_code = zip_code
@@ -19,7 +19,9 @@ class Library:
         self.phone = phone
 
     def __str__(self):
-        return f"Library at {self.street}, {self.city} {self.zip_code} is opened: {self.open_hours}, contact: {self.phone}"
+        return f"Library at {self.street}, {self.city} {self.zip_code} " \
+               f"is opened: {self.open_hours}, " \
+               f"contact: {self.phone}"
 
 
 class Employee:
@@ -35,7 +37,9 @@ class Employee:
         self.phone = phone
 
     def __str__(self):
-        return f"{self.first_name} {self.last_name} born in {self.birth_date} has been working in the library since {self.hire_date}. Contact details: {self.street}, {self.zip_code} {self.city}, {self.phone}"
+        return f"{self.first_name} {self.last_name} born in {self.birth_date} has been working in the " \
+               f"library since {self.hire_date}. " \
+               f"Contact details: {self.street}, {self.zip_code} {self.city}, {self.phone}"
 
 
 class Order:
@@ -46,7 +50,8 @@ class Order:
         self.order_date = order_date
 
     def __str__(self):
-        return f"Order placed by {self.student.name} on {self.order_date}.\nBooks borrowed: {list(map(lambda book: book.title, self.books))}.\nRealized by {self.employee} "
+        return f"Order placed by {self.student.name} on {self.order_date}.\n" \
+               f"Books borrowed: {list(map(lambda book: book.title, self.books))}.\nRealized by {self.employee} "
 
 
 class Book:
@@ -60,7 +65,9 @@ class Book:
         self.number_of_pages = number_of_pages
 
     def __str__(self):
-        return f"Book \"{self.title}\" wrote by {self.author_name} {self.author_surname}has been published {self.publication_date}. Number of pages: {self.number_of_pages}. It's in the library: {self.library}"
+        return f"Book \"{self.title}\" wrote by {self.author_name} {self.author_surname} " \
+               f"has been published {self.publication_date}. Number of pages: {self.number_of_pages}. " \
+               f"It's in the library: {self.library}"
 
 
 class Property:
