@@ -20,3 +20,7 @@ class Product:
 
     def __str__(self):
         return f'Product ID: {self._id}, name: {self._name}'
+
+    def __repr__(self) -> str:
+        return f'Product ID: {self._id}, name: {self._name}'
+
