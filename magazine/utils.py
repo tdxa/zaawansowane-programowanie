@@ -1,3 +1,5 @@
-products = ["apple", "banana", "orange"]
+employee = "Mubina Haluk"
 
-client = "Mubina Haluk"
+
+def message_product() -> None:
+    print("New product added!")

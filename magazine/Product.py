@@ -1,12 +1,14 @@
 import itertools
+from magazine.utils import message_product
 
 
 class Product:
-    id = itertools.count()
+    id = itertools.count(1)
 
     def __init__(self, name) -> None:
         self._id = next(Product.id)
         self._name = name
+        message_product()
 
     @property
     def name(self):
