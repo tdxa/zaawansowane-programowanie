@@ -56,6 +56,6 @@ def get_links_data():
     return links[1:]
 
 
-def get_serialized_data():
-    return [Link(int(tag[0]), int(tag[1]), int(tag[2])).__dict__ for tag in
+def get_serialized_links():
+    return [Link(int(link[0]), int(link[1]), int(link[2] or 0)).__dict__ for link in
             get_links_data()]
