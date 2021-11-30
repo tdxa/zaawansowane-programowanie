@@ -12,5 +12,4 @@ def get_movies_data():
 
 
 def get_serialized_movies():
-    # print(get_movies_data())
     return [Movie(movie[0], movie[1], movie[2]).__dict__ for movie in get_movies_data()]
