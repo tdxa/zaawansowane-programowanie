@@ -3,9 +3,10 @@ from typing import List
 
 from src.models.Movie import Movie
 from src.models.Rating import Rating
+from src.models.Tag import Tag
 
 
-def get_movies_data() -> list[str]:
+def get_movies_data() -> list[list[str]]:
     movies = []
     with open('data/movies.csv', encoding="utf-8") as csvfile:
         reader = csv.reader(csvfile, delimiter=",")
@@ -20,7 +21,7 @@ def get_serialized_movies():
 
 def get_ratings_data() -> list[list[str]]:
     ratings = []
-    with open('../data/ratings.csv', encoding="utf-8") as csvfile:
+    with open('data/ratings.csv', encoding="utf-8") as csvfile:
         reader = csv.reader(csvfile, delimiter=",")
         for row in reader:
             ratings.append(row)
@@ -32,4 +33,15 @@ def get_serialized_ratings():
             get_ratings_data()]
 
 
-print(get_serialized_ratings())
+def get_tags_data() -> list[list[str]]:
+    tags = []
+    with open('../data/tags.csv', encoding="utf-8") as csvfile:
+        reader = csv.reader(csvfile, delimiter=",")
+        for row in reader:
+            tags.append(row)
+    return tags[1:]
+
+
+def get_serialized_tags():
+    return [Tag(int(tag[0]), int(tag[1]), str(tag[2]), int(tag[3])).__dict__ for tag in
+            get_tags_data()]
