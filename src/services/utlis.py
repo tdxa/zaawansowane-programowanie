@@ -1,14 +1,14 @@
 import csv
-from typing import List
 
+from src.models.Link import Link
 from src.models.Movie import Movie
 from src.models.Rating import Rating
 from src.models.Tag import Tag
 
 
-def get_movies_data() -> list[list[str]]:
+def get_movies_data():
     movies = []
-    with open('data/movies.csv', encoding="utf-8") as csvfile:
+    with open('src/data/movies.csv', encoding="utf-8") as csvfile:
         reader = csv.reader(csvfile, delimiter=",")
         for row in reader:
             movies.append(row)
@@ -16,12 +16,12 @@ def get_movies_data() -> list[list[str]]:
 
 
 def get_serialized_movies():
-    return [Movie(movie[0], movie[1], movie[2]).__dict__ for movie in get_movies_data()]
+    return [Movie(movie[0], movie[1], movie[2].split('|')).__dict__ for movie in get_movies_data()]
 
 
-def get_ratings_data() -> list[list[str]]:
+def get_ratings_data():
     ratings = []
-    with open('data/ratings.csv', encoding="utf-8") as csvfile:
+    with open('src/data/ratings.csv', encoding="utf-8") as csvfile:
         reader = csv.reader(csvfile, delimiter=",")
         for row in reader:
             ratings.append(row)
@@ -33,9 +33,9 @@ def get_serialized_ratings():
             get_ratings_data()]
 
 
-def get_tags_data() -> list[list[str]]:
+def get_tags_data():
     tags = []
-    with open('../data/tags.csv', encoding="utf-8") as csvfile:
+    with open('src/data/tags.csv', encoding="utf-8") as csvfile:
         reader = csv.reader(csvfile, delimiter=",")
         for row in reader:
             tags.append(row)
@@ -45,3 +45,17 @@ def get_tags_data() -> list[list[str]]:
 def get_serialized_tags():
     return [Tag(int(tag[0]), int(tag[1]), str(tag[2]), int(tag[3])).__dict__ for tag in
             get_tags_data()]
+
+
+def get_links_data():
+    links = []
+    with open('src/data/links.csv', encoding="utf-8") as csvfile:
+        reader = csv.reader(csvfile, delimiter=",")
+        for row in reader:
+            links.append(row)
+    return links[1:]
+
+
+def get_serialized_data():
+    return [Link(int(tag[0]), int(tag[1]), int(tag[2])).__dict__ for tag in
+            get_links_data()]
