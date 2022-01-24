@@ -25,7 +25,7 @@ class Detector:
         descriptor = HOGDescriptor()
         descriptor.setSVMDetector(cv2.HOGDescriptor_getDefaultPeopleDetector())
 
-        persons, weights = descriptor.detectMultiScale(self._image, winStride=(4, 4), padding=(8, 8), scale=1.03)
+        persons, weights = descriptor.detectMultiScale(self._image, winStride=(4, 4), padding=(8, 8), scale=1.04)
 
         persons = np.array([[x, y, x + w, y + h] for (x, y, w, h) in persons])
         persons = non_max_suppression(persons, probs=None, overlapThresh=0.5)
