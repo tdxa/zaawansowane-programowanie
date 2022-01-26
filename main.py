@@ -1,6 +1,8 @@
 from src.detector import Detector
+from src.utils import photos_list
 
 if __name__ == '__main__':
     detector = Detector()
 
-    detector.check_image('images/people-1.jpg', 'HOG')
+    for photo in photos_list:
+        detector.check_image(photo, 'HOG')
