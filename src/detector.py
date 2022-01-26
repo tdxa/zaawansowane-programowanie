@@ -1,4 +1,5 @@
 import cv2
+import imutils
 import numpy as np
 from cv2 import HOGDescriptor
 from imutils.object_detection import non_max_suppression
@@ -11,12 +12,21 @@ from src.utils import FONT, FONT_COLOR, BOX_COLOR, get_text_size, FONT_SCALE, FO
 class Detector:
     def __init__(self):
         self._available_methods = {'HOG': self.hog_detect}
+        self._image = None
+        self._height = 0
+        self._width = 0
+        self._max_width = 800
+        self._number_of_people = 0
+        self._model = None
 
     def load_img(self, path: str):
         img = cv2.imread(path)
         self._image = img
         self._height = img.shape[0]
         self._width = img.shape[1]
+
+        if self._width > self._max_width:
+            self._image = imutils.resize(img, width=self._max_width)
 
     def show_image(self):
         cv2.imshow("Detection", self._image)
