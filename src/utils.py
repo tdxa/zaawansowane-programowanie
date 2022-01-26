@@ -17,4 +17,5 @@ def get_text_size(text, font_scale, font_thickness):
     size, _ = getTextSize(text, FONT, font_scale, font_thickness)
     return size
 
+
 photos_list = glob.glob('images/*.jpg')
